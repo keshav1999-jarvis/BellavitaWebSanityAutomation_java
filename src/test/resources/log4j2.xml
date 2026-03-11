@@ -21,6 +21,16 @@
             <AppenderRef ref="FileLog"/>
         </Logger>
 
+        <!-- Silence specific CDP/version finder warnings that are noisy but non-fatal -->
+        <Logger name="org.openqa.selenium.devtools.CdpVersionFinder" level="error" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLog"/>
+        </Logger>
+        <Logger name="org.openqa.selenium.chromium.ChromiumDriver" level="error" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLog"/>
+        </Logger>
+
         <Root level="info">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLog"/>

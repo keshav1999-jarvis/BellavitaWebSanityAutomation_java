@@ -16,6 +16,8 @@ import org.testng.annotations.BeforeSuite;
 import utils.ExtentManager;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseTest {
     public static WebDriver driver;
@@ -37,6 +39,8 @@ public class BaseTest {
         // 🔹 Read headless value (default = false)
         String headlessValue = System.getProperty("headless", "false");
         boolean isHeadless = headlessValue.equalsIgnoreCase("true");
+        Map<String, String> mobileEmulation = new HashMap<>();
+        mobileEmulation.put("deviceName", "iPhone X");
 
         ChromeOptions options = new ChromeOptions();
 
@@ -52,6 +56,7 @@ public class BaseTest {
         }
 
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+//        options.setExperimentalOption("mobileEmulation", mobileEmulation);
         driver = new ChromeDriver(options);
         LOGGER.info("Launched ChromeDriver instance");
 
